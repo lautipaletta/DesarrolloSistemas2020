@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LogIn</title>
-</head>
-<body>
+{% extends 'covid19api/layout.html' %}
 
-    <form action="" method="POST"> {% csrf_token %}
-        <p>Email: <input type="text" name="email"></p>
-        <p>Password: <input type="password" name="password"></p>
-        <input type="submit" value="Iniciar Sesión">
-    </form>
+{% block title %}Log in{% endblock %}
 
-</body>
-</html>
+{% block body %}
+<form action="" method="POST"> {% csrf_token %}
+    <p>Email: <input type="text" name="email"></p>
+    <p>Password: <input type="password" name="password"></p>
+    <input type="submit" value="Iniciar Sesión">
+</form>
+{% endblock %}

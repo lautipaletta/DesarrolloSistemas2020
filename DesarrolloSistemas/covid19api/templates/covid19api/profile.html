@@ -1,0 +1,17 @@
+{% extends 'covid19api/layout.html' %}
+
+{% block title %}{{user.username}}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <form method="POST" action="{% url 'profile' username=user.username %}">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit">
+    </form>    
+</div>
+
+{% endblock %}
