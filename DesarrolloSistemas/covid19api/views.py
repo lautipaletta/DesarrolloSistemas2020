@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import ObjectDoesNotExist
 
 from . models import User
 
@@ -20,9 +21,13 @@ def index(request):
 
     else:
 
-        user = User.objects.get(username=request.user)
+        try:
+            user = User.objects.get(username=request.user)
 
-        if user.is_authenticated:
-            return render(request, "covid19api/index.html")
-        else:
-            return render(request, "covid19api/login.hmtl")
+            if user.is_authenticated:
+                return render(request, "covid19api/index.html")
+        
+        except (ObjectDoesNotExist):
+            pass
+
+        return render(request, "covid19api/login.html")
