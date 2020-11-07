@@ -10,10 +10,10 @@ def index(request):
     
     if request.method == "POST":
 
-        username = User.objects.get(email=request.POST["email"]).username
-        password = request.POST["password"]
-
         try: 
+            username = User.objects.get(email=request.POST["email"]).username
+            password = request.POST["password"]
+
             user = authenticate(request, username=username, password=password)
 
             if user:
@@ -28,7 +28,7 @@ def index(request):
     else:
 
         try:
-            user = User.objects.get(username=request.user)
+            user = User.objects.get(username=request.user.username)
 
             if user.is_authenticated:
                 return render(request, "covid19api/index.html")
