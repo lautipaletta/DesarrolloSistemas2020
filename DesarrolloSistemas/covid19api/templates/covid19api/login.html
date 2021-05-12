@@ -3,9 +3,18 @@
 {% block title %}Log in{% endblock %}
 
 {% block body %}
+
+<div class="align-center" style="margin-top: 40px;">
+	{% if errormsg %}
+		<h3>Error: {{ errormsg }}</h3>
+	{% endif %}
+</div>
+
 <form action="/" method="POST"> {% csrf_token %}
-    <p>Email: <input type="text" name="email"></p>
-    <p>Password: <input type="password" name="password"></p>
-    <input type="submit" value="Iniciar Sesión">
+	<div class="contenedor">
+	    <p>Email: <input type="text" name="email"></p>
+	    <p>Password: <input type="password" name="password"></p>
+	    <div class="align-center"><input type="submit" value="Iniciar Sesión"></div>
+	</div>
 </form>
 {% endblock %}

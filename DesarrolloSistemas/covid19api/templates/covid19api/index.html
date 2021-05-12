@@ -1,3 +1,23 @@
 {% extends 'covid19api/layout.html' %}
 
 {% block title %}Covid 19 API{% endblock %}
+
+{% block body %}
+	<div class="contenedor-casos">
+		<h1 class="align-center">País: {{ request.user.country.upper }}</h1>
+		<h2>Nuevos:</h2>
+		<div class="align-center">
+			<p>Nuevos casos confirmados: {{ new_confirmed }}</p>
+			<p>Nuevos decesos confirmados: {{ new_deaths }}</p>
+			<p>Nuevos recuperados confirmados: {{ new_recovered }}</p>
+		</div>
+		<h2>Totales:</h2>
+		<div class="align-center">
+			<p>Total de casos confirmados: {{ total_confirmed }}</p>
+			<p>Total de decesos confirmados: {{ total_deaths }}</p>
+			<p>Total de recuperados confirmados: {{ total_recovered }}</p>
+			<p>Total activos: {{ total_active }}</p>
+		</div>
+		<h4>Modificado por última vez: {{ date }} a las {{ time }}</h4>
+	</div>
+{% endblock body %}

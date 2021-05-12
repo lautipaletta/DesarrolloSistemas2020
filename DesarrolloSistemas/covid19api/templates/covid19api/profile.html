@@ -4,14 +4,19 @@
 
 {% block body %}
 
-<div class="container">
-    <form method="POST" action="{% url 'profile' username=user.username %}">
-        {% csrf_token %}
-        <table>
-            {{form.as_table}}
-        </table>
-        <input type="submit">
+<div class="contenedor">
+
+	<h2>Modificar datos del usuario {{ request.user.username.capitalize }}</h2>
+
+	<hr style="border: 1px solid black;">
+
+    <form method="POST"> {% csrf_token %}
+        
+    	{{ form.as_p }}
+    	<p>Password: <a class="a-password" href="{% url 'change_password' %}">Cambiar Contraseña</a></p>
+
+        <div class="align-center"><input type="submit" value="Aplicar Cambios"></div>
     </form>    
 </div>
 
-{% endblock %}
+{% endblock body %}
